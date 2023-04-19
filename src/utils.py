@@ -10,28 +10,33 @@ from omegaconf import OmegaConf
 
 from src import ff_mnist, ff_model
 
-
+#not sure what this does, seems to setting the seed used in the config.yaml also for the numpy,torch and random
 def parse_args(opt):
     np.random.seed(opt.seed)
     torch.manual_seed(opt.seed)
     random.seed(opt.seed)
 
+    #basically prints the optimized in yaml format
+    #if there are no modifications it prints the exact config.yaml
     print(OmegaConf.to_yaml(opt))
     return opt
 
 
 def get_model_and_optimizer(opt):
+    #get the model from the optimizer
     model = ff_model.FF_model(opt)
+
+    #if possible put it in cuda
     if "cuda" in opt.device:
         model = model.cuda()
-    print(model, "\n")
+    #print(model, "\n")
 
     # Create optimizer with different hyper-parameters for the main model
     # and the downstream classification model.
     main_model_params = [
         p
         for p in model.parameters()
-        if all(p is not x for x in model.classification_loss.parameters())
+        if all(p is not x for x in model.linear_classifier.parameters())
     ]
     optimizer = torch.optim.SGD(
         [
@@ -42,13 +47,14 @@ def get_model_and_optimizer(opt):
                 "momentum": opt.training.momentum,
             },
             {
-                "params": model.classification_loss.parameters(),
+                "params": model.linear_classifier.parameters(),
                 "lr": opt.training.downstream_learning_rate,
                 "weight_decay": opt.training.downstream_weight_decay,
                 "momentum": opt.training.momentum,
             },
         ]
     )
+    #print(optimizer, "\n")
     return model, optimizer
 
 
@@ -78,6 +84,7 @@ def seed_worker(worker_id):
 
 
 def get_MNIST_partition(opt, partition):
+    #check if we want to get data for training/evaluation/both
     if partition in ["train", "val", "train_val"]:
         mnist = torchvision.datasets.MNIST(
             os.path.join(get_original_cwd(), opt.input.path),
@@ -85,6 +92,7 @@ def get_MNIST_partition(opt, partition):
             download=True,
             transform=torchvision.transforms.ToTensor(),
         )
+    #else we are just testing and there is no need for train flag
     elif partition in ["test"]:
         mnist = torchvision.datasets.MNIST(
             os.path.join(get_original_cwd(), opt.input.path),
@@ -98,6 +106,7 @@ def get_MNIST_partition(opt, partition):
     if partition == "train":
         mnist = torch.utils.data.Subset(mnist, range(50000))
     elif partition == "val":
+        #not sure why this is done again rather than just taking the subset for evaluation
         mnist = torchvision.datasets.MNIST(
             os.path.join(get_original_cwd(), opt.input.path),
             train=True,
@@ -151,14 +160,14 @@ def print_results(partition, iteration_time, scalar_outputs, epoch=None):
         print(f"Epoch {epoch} \t", end="")
 
     print(
-        f"{partition} \t \t"
+        f"{partition} \t"
         f"Time: {timedelta(seconds=iteration_time)} \t",
         end="",
     )
     if scalar_outputs is not None:
         for key, value in scalar_outputs.items():
             print(f"{key}: {value:.4f} \t", end="")
-    print()
+    print("\n")
 
 
 def log_results(result_dict, scalar_outputs, num_steps):
