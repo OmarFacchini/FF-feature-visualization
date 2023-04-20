@@ -5,6 +5,7 @@ import hydra
 import torch
 from omegaconf import DictConfig
 import omegaconf
+import pynvml as nvm
 
 
 from src import utils
@@ -122,6 +123,18 @@ def my_main(opt: DictConfig) -> None:
     total_params = sum(p.numel() for p in model.parameters())
     print(f"total params: {total_params}")
 
+    #print(f"device name: {torch.cuda.get_device_name()}\nallocated memory: {round(torch.cuda.memory_allocated()/1024**3,2)} GB\nmax memory: {torch.cuda.memory_usage()}")
+    #print(torch.cuda.memory_usage())
+    nvm.nvmlInit()
+    #will put this in train() after every epoch probably
+    deviceCount = nvm.nvmlDeviceGetCount()
+    for i in range(deviceCount):
+        handle = nvm.nvmlDeviceGetHandleByIndex(i)
+        info = nvm.nvmlDeviceGetMemoryInfo(handle)
+        print("Device", i, ":", nvm.nvmlDeviceGetName(handle), "total memory:", info.total/1024**3, "GB ","free memory:", info.free/1024**3, "GB ","used memory:", info.used/1024**3, "GB ", "load:", (info.used/info.total)*100)
+    
+    nvm.nvmlShutdown()
+
 
     wandb_config = omegaconf.OmegaConf.to_container(
         opt, resolve=True, throw_on_missing=True
@@ -133,6 +146,8 @@ def my_main(opt: DictConfig) -> None:
         config=wandb_config
     )
 
+
+    #pynvml.nvmlUnitGetHandleByIndex()
     model = train(opt, model, optimizer)
     validate_or_test(opt, model, "val")
 
