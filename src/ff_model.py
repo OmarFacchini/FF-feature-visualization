@@ -3,7 +3,9 @@ import math
 import torch
 import torch.nn as nn
 
+from sklearn.decomposition import PCA
 from src import utils
+import numpy as np
 
 
 
@@ -35,10 +37,16 @@ class FF_model(torch.nn.Module):
         channels_for_classification_loss = sum(
             self.num_channels[-i] for i in range(self.opt.model.num_layers - 1)
         )
-        self.linear_classifier = nn.Sequential(
-            # using mnmist we get 10 classes (numbers from 0 to 9)
-            nn.Linear(channels_for_classification_loss, 10, bias=False)
-        )
+        if(not self.opt.backprop):
+            self.linear_classifier = nn.Sequential(
+                # using mnmist we get 10 classes (numbers from 0 to 9)
+                nn.Linear(channels_for_classification_loss, 10, bias=False)
+            )
+        else:
+            self.linear_classifier = nn.Sequential(
+                # using mnmist we get 10 classes (numbers from 0 to 9)
+                nn.Linear(self.num_channels[-1], 10, bias=False)
+            )
         self.classification_loss = nn.CrossEntropyLoss()
 
         # Initialize weights.
@@ -89,7 +97,7 @@ class FF_model(torch.nn.Module):
             ).item()
         return ff_loss, ff_accuracy
 
-    def forward(self, inputs, labels):
+    def forward(self, inputs, labels, batch, epoch):
         #save a bit of memory in case we have backprop as we only store the loss
         if(not self.opt.backprop):
             scalar_outputs = {
@@ -112,6 +120,7 @@ class FF_model(torch.nn.Module):
         posneg_labels = torch.zeros(z.shape[0], device=self.opt.device)
         posneg_labels[: self.opt.input.batch_size] = 1
 
+
         #tensor of size 200 filled with 1s for the first half and 0 in the rest
         #print(posneg_labels)
  
@@ -122,10 +131,25 @@ class FF_model(torch.nn.Module):
         #normalize the layer, does nothing to shape, just normalizes values
         z = self._layer_norm(z)
 
+        pca = PCA(n_components=2)
+
+
         # there are 3 layers with size 1000
         for idx, layer in enumerate(self.model):
             #z.shape is tensor [200, 1000], values are init when generating the model
             z = layer(z)
+
+            #pca actuator
+            z = z.cpu()
+            myArray = z.detach().numpy()
+            pca.fit_transform(myArray)
+
+            #plot every 20 epochs and every 100 batches
+            #basically get total check on 5 epochs and 5 batches per epoch
+            if((epoch % 20) == 0 and (batch % 100) == 0):
+                utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False)
+
+            z = z.cuda()
 
             #apply activation function, removing negative values and setting them to 0
             z = self.act_fn.apply(z)
@@ -150,6 +174,19 @@ class FF_model(torch.nn.Module):
             #normalize layer
             z = self._layer_norm(z)
 
+            #pca actuator
+            z = z.cpu()
+            myArray = z.detach().numpy()
+            pca.fit_transform(myArray)
+
+            #plot every 20 epochs and every 100 batches
+            #basically get total check on 5 epochs and 5 batches per epoch
+            if((epoch % 20) == 0 and (batch % 100) == 0):
+                utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True)
+
+            z = z.cuda()
+            
+
         #classify
         scalar_outputs = self.forward_downstream_classification_model(
             inputs, labels, scalar_outputs=scalar_outputs
@@ -165,6 +202,7 @@ class FF_model(torch.nn.Module):
                 "Loss": torch.zeros(1, device=self.opt.device),
             }
 
+        #z is the layer
         z = inputs["neutral_sample"]
         z = z.reshape(z.shape[0], -1)
         z = self._layer_norm(z)
@@ -185,7 +223,7 @@ class FF_model(torch.nn.Module):
         if(not self.opt.backprop):
             output = self.linear_classifier(input_classification_model.detach())
         else:
-            output = self.linear_classifier(input_classification_model)
+            output = self.linear_classifier(z)
         output = output - torch.max(output, dim=-1, keepdim=True)[0]
         classification_loss = self.classification_loss(output, labels["class_labels"])
         classification_accuracy = utils.get_accuracy(

@@ -25,12 +25,11 @@ def train(opt, model, optimizer):
         batch = 0
 
         for inputs, labels in train_loader:
-            batch += 1
             inputs, labels = utils.preprocess_inputs(opt, inputs, labels)
 
             optimizer.zero_grad()
 
-            scalar_outputs = model(inputs, labels)
+            scalar_outputs = model(inputs, labels, batch, epoch)
             
             #print(f"did the forward {batch}")
             #calculates derivative of loss
@@ -42,6 +41,8 @@ def train(opt, model, optimizer):
             train_results = utils.log_results(
                 train_results, scalar_outputs, num_steps_per_epoch
             )
+
+            batch += 1
 
         utils.print_results("train", time.time() - start_time, train_results, epoch)
 
@@ -115,17 +116,17 @@ def my_main(opt: DictConfig) -> None:
     trainable_params = 0
     total_params = 0
 
-    '''for param in model.parameters():
+    for param in model.parameters():
         if param.requires_grad:
             trainable_params += param.numel()
         total_params += param.numel()
-    print(f"trainable params: {trainable_params},\ntotal params: {total_params}")'''
-    total_params = sum(p.numel() for p in model.parameters())
-    print(f"total params: {total_params}")
+    print(f"trainable params: {trainable_params},\ntotal params: {total_params}")
+    #total_params = sum(p.numel() for p in model.parameters())
+    #print(f"total params: {total_params}")
 
     #print(f"device name: {torch.cuda.get_device_name()}\nallocated memory: {round(torch.cuda.memory_allocated()/1024**3,2)} GB\nmax memory: {torch.cuda.memory_usage()}")
     #print(torch.cuda.memory_usage())
-    nvm.nvmlInit()
+    '''nvm.nvmlInit()
     #will put this in train() after every epoch probably
     deviceCount = nvm.nvmlDeviceGetCount()
     for i in range(deviceCount):
@@ -133,9 +134,9 @@ def my_main(opt: DictConfig) -> None:
         info = nvm.nvmlDeviceGetMemoryInfo(handle)
         print("Device", i, ":", nvm.nvmlDeviceGetName(handle), "total memory:", info.total/1024**3, "GB ","free memory:", info.free/1024**3, "GB ","used memory:", info.used/1024**3, "GB ", "load:", (info.used/info.total)*100)
     
-    nvm.nvmlShutdown()
+    nvm.nvmlShutdown()'''
 
-
+    #return
     wandb_config = omegaconf.OmegaConf.to_container(
         opt, resolve=True, throw_on_missing=True
     )

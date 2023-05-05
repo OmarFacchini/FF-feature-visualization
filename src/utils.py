@@ -7,6 +7,8 @@ import torch
 import torchvision
 from hydra.utils import get_original_cwd
 from omegaconf import OmegaConf
+import matplotlib.pyplot as plt
+import matplotlib.colors as pltColors
 
 from src import ff_mnist, ff_model
 
@@ -177,3 +179,24 @@ def log_results(result_dict, scalar_outputs, num_steps):
         else:
             result_dict[key] += value.item() / num_steps
     return result_dict
+
+def plot(data, labels, batchsize, layer, batch, epoch, norm):
+    myLabels = labels['class_labels']
+    myLabels = myLabels.cpu()
+    myLabels = myLabels.numpy()
+    #data = data.detach().numpy()
+
+    plt.figure(figsize=(8,6))
+    plot = plt.scatter(data[:batchsize][:,0], data[:batchsize][:,1], c=myLabels)
+    plt.legend(handles=plot.legend_elements()[0], labels=list(set(myLabels)), loc=(1.02,0))
+    plt.xlabel("PC1")
+    plt.ylabel("PC2")
+    plt.title("First two principal components after scaling")
+    if(not norm):
+        plt.savefig(f"./images/PCA/epoch{epoch}/{batch}/{layer}.png") 
+    elif norm:
+        plt.savefig(f"./images/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+    plt.close()
+    #plt.show()
+
+    return
