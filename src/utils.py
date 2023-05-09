@@ -180,11 +180,12 @@ def log_results(result_dict, scalar_outputs, num_steps):
             result_dict[key] += value.item() / num_steps
     return result_dict
 
-def plot(data, labels, batchsize, layer, batch, epoch, norm):
+def plot(data, labels, batchsize, layer, batch, epoch, norm, classifier):
     myLabels = labels['class_labels']
-    myLabels = myLabels.cpu()
-    myLabels = myLabels.numpy()
+    #myLabels = myLabels.cpu()
+    myLabels = myLabels.cpu().numpy()
     #data = data.detach().numpy()
+    runType = 'backprop'
 
     plt.figure(figsize=(8,6))
     plot = plt.scatter(data[:batchsize][:,0], data[:batchsize][:,1], c=myLabels)
@@ -192,10 +193,16 @@ def plot(data, labels, batchsize, layer, batch, epoch, norm):
     plt.xlabel("PC1")
     plt.ylabel("PC2")
     plt.title("First two principal components after scaling")
-    if(not norm):
-        plt.savefig(f"./images/PCA/epoch{epoch}/{batch}/{layer}.png") 
-    elif norm:
-        plt.savefig(f"./images/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+    if(not classifier):
+        if(not norm):
+            plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/{layer}.png") 
+        elif norm:
+            plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+    else:
+        if(not norm):
+            plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/classifier/{layer}.png") 
+        elif norm:
+            plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/classifier/{layer}.png")
     plt.close()
     #plt.show()
 

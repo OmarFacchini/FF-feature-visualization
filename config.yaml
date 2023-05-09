@@ -1,7 +1,7 @@
 seed: 42
 device: "cuda"  # cpu or cuda
-backprop: False
-run_name: "test no bp"
+backprop: True
+run_name: "backprop with classifier"
 
 input:
   path: datasets
