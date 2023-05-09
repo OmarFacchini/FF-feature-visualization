@@ -150,7 +150,6 @@ class FF_model(torch.nn.Module):
                 if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
                     utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=False)
 
-            #z = z.cuda()
 
             #apply activation function, removing negative values and setting them to 0
             z = self.act_fn.apply(z)
@@ -176,7 +175,6 @@ class FF_model(torch.nn.Module):
             z = self._layer_norm(z)
 
             #pca actuator
-            #z = z.cpu()
             with torch.no_grad():
                 myArray = z.detach().cpu().numpy()
                 self.pca.fit_transform(myArray)
@@ -185,8 +183,6 @@ class FF_model(torch.nn.Module):
                 #basically get total check on 5 epochs and 5 batches per epoch
                 if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
                     utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=False)
-
-            #z = z.cuda()
             
 
         #classify
