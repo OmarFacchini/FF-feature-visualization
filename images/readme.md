@@ -226,20 +226,134 @@ will keep the batch fixed for this comparison
 ### layer 0 
 | epoch | normalized PCA            |  standard PCA |
 :------:|:-------------------------:|:-------------------------:
-0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/0.png) | ![](/images/backprop/PCA/epoch0/0/classifier/0.png) |
-60       | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/0.png) | ![](/images/backprop/PCA/epoch60/0/classifier/0.png) |
-99       | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/0.png) | ![](/images/backprop/PCA/epoch99/0/classifier/0.png) |
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/0.png)  | ![](/images/backprop/PCA/epoch0/0/classifier/0.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/0.png) | ![](/images/backprop/PCA/epoch60/0/classifier/0.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/0.png) | ![](/images/backprop/PCA/epoch99/0/classifier/0.png) |
 
 ### layer 1 
 | epoch | normalized PCA            |  standard PCA |
 :------:|:-------------------------:|:-------------------------:
-0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/1.png) | ![](/images/backprop/PCA/epoch0/0/classifier/1.png) |
-60       | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/1.png) | ![](/images/backprop/PCA/epoch60/0/classifier/1.png) |
-99       | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/1.png) | ![](/images/backprop/PCA/epoch99/0/classifier/1.png) |
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/1.png)  | ![](/images/backprop/PCA/epoch0/0/classifier/1.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/1.png) | ![](/images/backprop/PCA/epoch60/0/classifier/1.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/1.png) | ![](/images/backprop/PCA/epoch99/0/classifier/1.png) |
 
 ### layer 2 
 | epoch | normalized PCA            |  standard PCA |
 :------:|:-------------------------:|:-------------------------:
-0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/2.png) | ![](/images/backprop/PCA/epoch0/0/classifier/2.png) |
-60       | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/2.png) | ![](/images/backprop/PCA/epoch60/0/classifier/2.png) |
-99       | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/2.png) | ![](/images/backprop/PCA/epoch99/0/classifier/2.png) |
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/2.png)  | ![](/images/backprop/PCA/epoch0/0/classifier/2.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/2.png) | ![](/images/backprop/PCA/epoch60/0/classifier/2.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/2.png) | ![](/images/backprop/PCA/epoch99/0/classifier/2.png) |
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# test to check if PCA is actually doing clustering
+
+## standard PCA classifier
+
+### layer 0
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/PCA/epoch0/0/classifier/0.png)  | ![](/images/backpropTest/PCA/epoch0/0/classifier/0.png)  |
+60      | ![](/images/backprop/PCA/epoch60/0/classifier/0.png) | ![](/images/backpropTest/PCA/epoch60/0/classifier/0.png) |
+99      | ![](/images/backprop/PCA/epoch99/0/classifier/0.png) | ![](/images/backpropTest/PCA/epoch99/0/classifier/0.png) |
+
+### layer 1
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/PCA/epoch0/0/classifier/1.png)  | ![](/images/backpropTest/PCA/epoch0/0/classifier/1.png)  |
+60      | ![](/images/backprop/PCA/epoch60/0/classifier/1.png) | ![](/images/backpropTest/PCA/epoch60/0/classifier/1.png) |
+99      | ![](/images/backprop/PCA/epoch99/0/classifier/1.png) | ![](/images/backpropTest/PCA/epoch99/0/classifier/1.png) |
+
+### layer 2
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/PCA/epoch0/0/classifier/2.png)  | ![](/images/backpropTest/PCA/epoch0/0/classifier/2.png)  |
+60      | ![](/images/backprop/PCA/epoch60/0/classifier/2.png) | ![](/images/backpropTest/PCA/epoch60/0/classifier/2.png) |
+99      | ![](/images/backprop/PCA/epoch99/0/classifier/2.png) | ![](/images/backpropTest/PCA/epoch99/0/classifier/2.png) |
+
+## normalized PCA classifier
+
+### layer 0
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/0.png)  | ![](/images/backpropTest/normalizedPCA/epoch0/0/classifier/0.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/0.png) | ![](/images/backpropTest/normalizedPCA/epoch60/0/classifier/0.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/0.png) | ![](/images/backpropTest/normalizedPCA/epoch99/0/classifier/0.png) |
+
+### layer 1
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/1.png)  | ![](/images/backpropTest/normalizedPCA/epoch0/0/classifier/1.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/1.png) | ![](/images/backpropTest/normalizedPCA/epoch60/0/classifier/1.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/1.png) | ![](/images/backpropTest/normalizedPCA/epoch99/0/classifier/1.png) |
+
+### layer 2
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/classifier/2.png)  | ![](/images/backpropTest/normalizedPCA/epoch0/0/classifier/2.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/classifier/2.png) | ![](/images/backpropTest/normalizedPCA/epoch60/0/classifier/2.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/classifier/2.png) | ![](/images/backpropTest/normalizedPCA/epoch99/0/classifier/2.png) |
+
+
+
+## standard PCA normal 
+
+### layer 0
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/PCA/epoch0/0/0.png)  | ![](/images/backpropTest/PCA/epoch0/0/0.png)  |
+60      | ![](/images/backprop/PCA/epoch60/0/0.png) | ![](/images/backpropTest/PCA/epoch60/0/0.png) |
+99      | ![](/images/backprop/PCA/epoch99/0/0.png) | ![](/images/backpropTest/PCA/epoch99/0/0.png) |
+
+### layer 1
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/PCA/epoch0/0/1.png)  | ![](/images/backpropTest/PCA/epoch0/0/1.png)  |
+60      | ![](/images/backprop/PCA/epoch60/0/1.png) | ![](/images/backpropTest/PCA/epoch60/0/1.png) |
+99      | ![](/images/backprop/PCA/epoch99/0/1.png) | ![](/images/backpropTest/PCA/epoch99/0/1.png) |
+
+### layer 2
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/PCA/epoch0/0/2.png)  | ![](/images/backpropTest/PCA/epoch0/0/2.png)  |
+60      | ![](/images/backprop/PCA/epoch60/0/2.png) | ![](/images/backpropTest/PCA/epoch60/0/2.png) |
+99      | ![](/images/backprop/PCA/epoch99/0/2.png) | ![](/images/backpropTest/PCA/epoch99/0/2.png) |
+
+
+
+## normalized PCA normal
+
+### layer 0
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/0.png)  | ![](/images/backpropTest/normalizedPCA/epoch0/0/0.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/0.png) | ![](/images/backpropTest/normalizedPCA/epoch60/0/0.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/0.png) | ![](/images/backpropTest/normalizedPCA/epoch99/0/0.png) |
+
+### layer 1
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/1.png)  | ![](/images/backpropTest/normalizedPCA/epoch0/0/1.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/1.png) | ![](/images/backpropTest/normalizedPCA/epoch60/0/1.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/1.png) | ![](/images/backpropTest/normalizedPCA/epoch99/0/1.png) |
+
+### layer 2
+
+| epoch | PCA applied            |  pre-PCA |
+:------:|:-------------------------:|:-------------------------:
+0       | ![](/images/backprop/normalizedPCA/epoch0/0/2.png)  | ![](/images/backpropTest/normalizedPCA/epoch0/0/2.png)  |
+60      | ![](/images/backprop/normalizedPCA/epoch60/0/2.png) | ![](/images/backpropTest/normalizedPCA/epoch60/0/2.png) |
+99      | ![](/images/backprop/normalizedPCA/epoch99/0/2.png) | ![](/images/backpropTest/normalizedPCA/epoch99/0/2.png) |
