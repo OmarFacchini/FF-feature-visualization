@@ -135,7 +135,7 @@ def my_main(opt: DictConfig) -> None:
         print("Device", i, ":", nvm.nvmlDeviceGetName(handle), "total memory:", info.total/1024**3, "GB ","free memory:", info.free/1024**3, "GB ","used memory:", info.used/1024**3, "GB ", "load:", (info.used/info.total)*100)
     
     nvm.nvmlShutdown()'''
-
+    #model = train(opt, model, optimizer)
     #return
     wandb_config = omegaconf.OmegaConf.to_container(
         opt, resolve=True, throw_on_missing=True

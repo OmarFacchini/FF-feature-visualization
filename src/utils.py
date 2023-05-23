@@ -180,7 +180,7 @@ def log_results(result_dict, scalar_outputs, num_steps):
             result_dict[key] += value.item() / num_steps
     return result_dict
 
-def plot(data, labels, batchsize, layer, batch, epoch, norm, classifier):
+def plot(data, labels, batchsize, layer, batch, epoch, norm, classifier, oldData=False):
     myLabels = labels['class_labels']
     #myLabels = myLabels.cpu()
     myLabels = myLabels.cpu().numpy()
@@ -193,16 +193,34 @@ def plot(data, labels, batchsize, layer, batch, epoch, norm, classifier):
     plt.xlabel("PC1")
     plt.ylabel("PC2")
     plt.title("First two principal components after scaling")
-    if(not classifier):
-        if(not norm):
-            plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/{layer}.png") 
-        elif norm:
-            plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+    if(oldData):
+        #plot = plt.scatter(data[:batchsize][:,2], data[:batchsize][:,3], c=myLabels)
+        #plt.legend(handles=plot.legend_elements()[0], labels=list(set(myLabels)), loc=(1.02,0))
+        if(not classifier):
+            if(not norm):
+                plt.savefig(f"./images/{runType}Test/PCA/epoch{epoch}/{batch}/{layer}.png") 
+            elif norm:
+                plt.savefig(f"./images/{runType}Test/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+        else:
+            if(not norm):
+                plt.savefig(f"./images/{runType}Test/PCA/epoch{epoch}/{batch}/classifier/{layer}.png") 
+            elif norm:
+                plt.savefig(f"./images/{runType}Test/normalizedPCA/epoch{epoch}/{batch}/classifier/{layer}.png")
     else:
-        if(not norm):
-            plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/classifier/{layer}.png") 
-        elif norm:
-            plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/classifier/{layer}.png")
+        #plot = plt.scatter(data[:batchsize][:,0], data[:batchsize][:,1], c=myLabels)
+        #plt.legend(handles=plot.legend_elements()[0], labels=list(set(myLabels)), loc=(1.02,0))
+        if(not classifier):
+            if(not norm):
+                plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/{layer}.png") 
+            elif norm:
+                plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+        else:
+            if(not norm):
+                plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/classifier/{layer}.png") 
+            elif norm:
+                plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/classifier/{layer}.png")
+
+
     plt.close()
     #plt.show()
 

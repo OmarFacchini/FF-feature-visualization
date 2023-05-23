@@ -2,10 +2,11 @@ import math
 
 import torch
 import torch.nn as nn
-
+from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from src import utils
 import numpy as np
+from math import inf
 
 
 
@@ -17,6 +18,7 @@ class FF_model(torch.nn.Module):
 
 
         self.pca = PCA(n_components=2)
+        #self.scaler = StandardScaler()
         self.opt = opt
         self.num_channels = [self.opt.model.hidden_dim] * self.opt.model.num_layers
         self.act_fn = ReLU_full_grad()
@@ -142,13 +144,17 @@ class FF_model(torch.nn.Module):
 
             #pca actuator
             with torch.no_grad():
-                myArray = z.detach().cpu().numpy()
-                self.pca.fit_transform(myArray)
+                myArray = z[:self.opt.input.batch_size].detach().cpu().numpy()
+                #self.scaler.fit(myArray)
+                #myArray = self.scaler.transform(myArray)
+                fitArray = self.pca.fit_transform(myArray)
+
 
                 #plot every 20 epochs and every 100 batches
                 #basically get total check on 5 epochs and 5 batches per epoch
                 if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=False)
+                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=False, oldData=True)
+                    utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=False)
 
 
             #apply activation function, removing negative values and setting them to 0
@@ -176,13 +182,16 @@ class FF_model(torch.nn.Module):
 
             #pca actuator
             with torch.no_grad():
-                myArray = z.detach().cpu().numpy()
-                self.pca.fit_transform(myArray)
+                myArray = z[:self.opt.input.batch_size].detach().cpu().numpy()
+                #self.scaler.fit(myArray)
+                #myArray = self.scaler.transform(myArray)
+                fitArray = self.pca.fit_transform(myArray)
 
                 #plot every 20 epochs and every 100 batches
                 #basically get total check on 5 epochs and 5 batches per epoch
                 if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=False)
+                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=False, oldData=True)
+                    utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=False)
             
 
         #classify
@@ -212,24 +221,30 @@ class FF_model(torch.nn.Module):
             for idx, layer in enumerate(self.model):
                 z = layer(z)
 
-                myArray = z.detach().cpu().numpy()
-                self.pca.fit_transform(myArray)
+                myArray = z[:self.opt.input.batch_size].detach().cpu().numpy()
+                #self.scaler.fit(myArray)
+                #myArray = self.scaler.transform(myArray)
+                fitArray = self.pca.fit_transform(myArray)
 
                 #plot every 20 epochs and every 100 batches
                 #basically get total check on 5 epochs and 5 batches per epoch
                 if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=True)
+                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=True, oldData=True)
+                    utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=True)
 
                 z = self.act_fn.apply(z)
                 z = self._layer_norm(z)
 
-                myArray = z.detach().cpu().numpy()
-                self.pca.fit_transform(myArray)
+                myArray = z[:self.opt.input.batch_size].detach().cpu().numpy()
+                #self.scaler.fit(myArray)
+                #myArray = self.scaler.transform(myArray)
+                fitArray = self.pca.fit_transform(myArray)
 
                 #plot every 20 epochs and every 100 batches
                 #basically get total check on 5 epochs and 5 batches per epoch
                 if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=True)
+                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=True, oldData=True)
+                    utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=True)
 
                 if idx >= 1:
                     input_classification_model.append(z)
