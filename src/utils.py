@@ -185,7 +185,12 @@ def plot(data, labels, batchsize, layer, batch, epoch, norm, classifier, oldData
     #myLabels = myLabels.cpu()
     myLabels = myLabels.cpu().numpy()
     #data = data.detach().numpy()
+
+    #either backprop or FF
     runType = 'backprop'
+
+    #either TSNE or PCA
+    method = 'TSNE'
 
     plt.figure(figsize=(8,6))
     plot = plt.scatter(data[:batchsize][:,0], data[:batchsize][:,1], c=myLabels)
@@ -198,27 +203,27 @@ def plot(data, labels, batchsize, layer, batch, epoch, norm, classifier, oldData
         #plt.legend(handles=plot.legend_elements()[0], labels=list(set(myLabels)), loc=(1.02,0))
         if(not classifier):
             if(not norm):
-                plt.savefig(f"./images/{runType}Test/PCA/epoch{epoch}/{batch}/{layer}.png") 
+                plt.savefig(f"./images/{runType}Test/{method}/epoch{epoch}/{batch}/{layer}.png") 
             elif norm:
-                plt.savefig(f"./images/{runType}Test/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+                plt.savefig(f"./images/{runType}Test/normalized{method}/epoch{epoch}/{batch}/{layer}.png")
         else:
             if(not norm):
-                plt.savefig(f"./images/{runType}Test/PCA/epoch{epoch}/{batch}/classifier/{layer}.png") 
+                plt.savefig(f"./images/{runType}Test/{method}/epoch{epoch}/{batch}/classifier/{layer}.png") 
             elif norm:
-                plt.savefig(f"./images/{runType}Test/normalizedPCA/epoch{epoch}/{batch}/classifier/{layer}.png")
+                plt.savefig(f"./images/{runType}Test/normalized{method}/epoch{epoch}/{batch}/classifier/{layer}.png")
     else:
         #plot = plt.scatter(data[:batchsize][:,0], data[:batchsize][:,1], c=myLabels)
         #plt.legend(handles=plot.legend_elements()[0], labels=list(set(myLabels)), loc=(1.02,0))
         if(not classifier):
             if(not norm):
-                plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/{layer}.png") 
+                plt.savefig(f"./images/{runType}/{method}/epoch{epoch}/{batch}/{layer}.png") 
             elif norm:
-                plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/{layer}.png")
+                plt.savefig(f"./images/{runType}/normalized{method}/epoch{epoch}/{batch}/{layer}.png")
         else:
             if(not norm):
-                plt.savefig(f"./images/{runType}/PCA/epoch{epoch}/{batch}/classifier/{layer}.png") 
+                plt.savefig(f"./images/{runType}/{method}/epoch{epoch}/{batch}/classifier/{layer}.png") 
             elif norm:
-                plt.savefig(f"./images/{runType}/normalizedPCA/epoch{epoch}/{batch}/classifier/{layer}.png")
+                plt.savefig(f"./images/{runType}/normalized{method}/epoch{epoch}/{batch}/classifier/{layer}.png")
 
 
     plt.close()
