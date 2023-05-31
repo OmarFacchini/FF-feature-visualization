@@ -1,7 +1,7 @@
 seed: 42
 device: "cuda"  # cpu or cuda
 backprop: True
-run_name: "backprop tsne hdim 256"
+run_name: "backprop tsne hdim 1000"
 
 input:
   path: datasets
@@ -12,7 +12,7 @@ model:
   peer_normalization: 0.03
   momentum: 0.9  # Momentum to use for the running mean in peer normalization loss.
 
-  hidden_dim: 256
+  hidden_dim: 1000
   num_layers: 3
 
 

@@ -157,7 +157,7 @@ class FF_model(torch.nn.Module):
                     #plot every 20 epochs and every 100 batches
                     #basically get total check on 5 epochs and 5 batches per epoch
                     #if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=False, oldData=True)
+                    #utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=False, oldData=True)
                     utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=False)
 
 
@@ -196,7 +196,7 @@ class FF_model(torch.nn.Module):
                     #plot every 20 epochs and every 100 batches
                     #basically get total check on 5 epochs and 5 batches per epoch
                     #if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=False, oldData=True)
+                    #utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=False, oldData=True)
                     utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=False)
             
 
@@ -238,7 +238,7 @@ class FF_model(torch.nn.Module):
                     #plot every 20 epochs and every 100 batches
                     #basically get total check on 5 epochs and 5 batches per epoch
                 #if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=True, oldData=True)
+                    #utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=True, oldData=True)
                     utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=False, classifier=True)
 
                 #----------------------NORMALIZATION---------------------
@@ -256,7 +256,7 @@ class FF_model(torch.nn.Module):
                     #plot every 20 epochs and every 100 batches
                     #basically get total check on 5 epochs and 5 batches per epoch
                 #if( ((epoch % 20) == 0 or epoch == self.opt.training.epochs - 1) and (batch % 100) == 0):
-                    utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=True, oldData=True)
+                    #utils.plot(myArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=True, oldData=True)
                     utils.plot(fitArray, labels, self.opt.input.batch_size, idx, batch, epoch, norm=True, classifier=True)
 
                 if idx >= 1:
