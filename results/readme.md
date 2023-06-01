@@ -157,4 +157,83 @@ This is used to compare how different layer dimensions act on the TSNE
 | 1000 | ![](/results/hdim1000/images/backprop/TSNE/epoch0/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch60/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch99/0/classifier/2.png) |
 
 
+## **PCA vs TSNE**
+
+### **compare layer with itself in different epochs with PCA and TSNE **
+This is to compare how a layer evolves in comparison between PCA and TSNE
+
+`batch of reference:0 `
+
+
+### **Normalized TSNE**
+
+#### layer 0
+| hdim  | PCA or TSNE | epoch0 | epoch60 | epoch99 |
+|:-----:|:-----------:|:------:|:-------:|:-------:|
+|  256  |  PCA   | ![](/results/hdim256/images/backprop/normalizedPCA/epoch0/0/classifier/0.png) | ![](/results/hdim256/images/backprop/normalizedPCA/epoch60/0/classifier/0.png) |![](/results/hdim256/images/backprop/normalizedPCA/epoch99/0/classifier/0.png) |
+|  256  |  TSNE  | ![](/results/hdim256/images/backprop/normalizedTSNE/epoch0/0/classifier/0.png) | ![](/results/hdim256/images/backprop/normalizedTSNE/epoch60/0/classifier/0.png) |![](/results/hdim256/images/backprop/normalizedTSNE/epoch99/0/classifier/0.png) |
+|  512  |  PCA   | ![](/results/hdim512/images/backprop/normalizedPCA/epoch0/0/classifier/0.png) | ![](/results/hdim512/images/backprop/normalizedPCA/epoch60/0/classifier/0.png) |![](/results/hdim512/images/backprop/normalizedPCA/epoch99/0/classifier/0.png) |
+|  512  |  TSNE  | ![](/results/hdim512/images/backprop/normalizedTSNE/epoch0/0/classifier/0.png) | ![](/results/hdim512/images/backprop/normalizedTSNE/epoch60/0/classifier/0.png) |![](/results/hdim512/images/backprop/normalizedTSNE/epoch99/0/classifier/0.png) |
+| 1000  |  PCA   | ![](/results/hdim1000/images/backprop/normalizedPCA/epoch0/0/classifier/0.png) | ![](/results/hdim1000/images/backprop/normalizedPCA/epoch60/0/classifier/0.png) |![](/results/hdim1000/images/backprop/normalizedPCA/epoch99/0/classifier/0.png) |
+| 1000  |  TSNE  | ![](/results/hdim1000/images/backprop/normalizedTSNE/epoch0/0/classifier/0.png) | ![](/results/hdim1000/images/backprop/normalizedTSNE/epoch60/0/classifier/0.png) |![](/results/hdim1000/images/backprop/normalizedTSNE/epoch99/0/classifier/0.png) |
+
+
+#### layer 1
+| hdim  | PCA or TSNE | epoch0 | epoch60 | epoch99 |
+|:-----:|:-----------:|:------:|:-------:|:-------:|
+|  256  |  PCA   | ![](/results/hdim256/images/backprop/normalizedPCA/epoch0/0/classifier/1.png) | ![](/results/hdim256/images/backprop/normalizedPCA/epoch60/0/classifier/1.png) |![](/results/hdim256/images/backprop/normalizedPCA/epoch99/0/classifier/1.png) |
+|  256  |  TSNE  | ![](/results/hdim256/images/backprop/normalizedTSNE/epoch0/0/classifier/1.png) | ![](/results/hdim256/images/backprop/normalizedTSNE/epoch60/0/classifier/1.png) |![](/results/hdim256/images/backprop/normalizedTSNE/epoch99/0/classifier/1.png) |
+|  512  |  PCA   | ![](/results/hdim512/images/backprop/normalizedPCA/epoch0/0/classifier/1.png) | ![](/results/hdim512/images/backprop/normalizedPCA/epoch60/0/classifier/1.png) |![](/results/hdim512/images/backprop/normalizedPCA/epoch99/0/classifier/1.png) |
+|  512  |  TSNE  | ![](/results/hdim512/images/backprop/normalizedTSNE/epoch0/0/classifier/1.png) | ![](/results/hdim512/images/backprop/normalizedTSNE/epoch60/0/classifier/1.png) |![](/results/hdim512/images/backprop/normalizedTSNE/epoch99/0/classifier/1.png) |
+| 1000  |  PCA   | ![](/results/hdim1000/images/backprop/normalizedPCA/epoch0/0/classifier/1.png) | ![](/results/hdim1000/images/backprop/normalizedPCA/epoch60/0/classifier/1.png) |![](/results/hdim1000/images/backprop/normalizedPCA/epoch99/0/classifier/1.png) |
+| 1000  |  TSNE  | ![](/results/hdim1000/images/backprop/normalizedTSNE/epoch0/0/classifier/1.png) | ![](/results/hdim1000/images/backprop/normalizedTSNE/epoch60/0/classifier/1.png) |![](/results/hdim1000/images/backprop/normalizedTSNE/epoch99/0/classifier/1.png) |
+
+
+#### layer 2
+| hdim  | PCA or TSNE | epoch0 | epoch60 | epoch99 |
+|:-----:|:-----------:|:------:|:-------:|:-------:|
+|  256  |  PCA   | ![](/results/hdim256/images/backprop/normalizedPCA/epoch0/0/classifier/2.png) | ![](/results/hdim256/images/backprop/normalizedPCA/epoch60/0/classifier/2.png) |![](/results/hdim256/images/backprop/normalizedPCA/epoch99/0/classifier/2.png) |
+|  256  |  TSNE  | ![](/results/hdim256/images/backprop/normalizedTSNE/epoch0/0/classifier/2.png) | ![](/results/hdim256/images/backprop/normalizedTSNE/epoch60/0/classifier/2.png) |![](/results/hdim256/images/backprop/normalizedTSNE/epoch99/0/classifier/2.png) |
+|  512  |  PCA   | ![](/results/hdim512/images/backprop/normalizedPCA/epoch0/0/classifier/2.png) | ![](/results/hdim512/images/backprop/normalizedPCA/epoch60/0/classifier/2.png) |![](/results/hdim512/images/backprop/normalizedPCA/epoch99/0/classifier/2.png) |
+|  512  |  TSNE  | ![](/results/hdim512/images/backprop/normalizedTSNE/epoch0/0/classifier/2.png) | ![](/results/hdim512/images/backprop/normalizedTSNE/epoch60/0/classifier/2.png) |![](/results/hdim512/images/backprop/normalizedTSNE/epoch99/0/classifier/2.png) |
+| 1000  |  PCA   | ![](/results/hdim1000/images/backprop/normalizedPCA/epoch0/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/normalizedPCA/epoch60/0/classifier/2.png) |![](/results/hdim1000/images/backprop/normalizedPCA/epoch99/0/classifier/2.png) |
+| 1000  |  TSNE  | ![](/results/hdim1000/images/backprop/TSNE/epoch0/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch60/0/classifier/2.png) |![](/results/hdim1000/images/backprop/TSNE/epoch99/0/classifier/2.png) |
+
+
+### **Standard TSNE**
+
+#### layer 0
+| hdim  | PCA or TSNE | epoch0 | epoch60 | epoch99 |
+|:-----:|:-----------:|:------:|:-------:|:-------:|
+|  256  |  PCA   | ![](/results/hdim256/images/backprop/PCA/epoch0/0/classifier/0.png) | ![](/results/hdim256/images/backprop/PCA/epoch60/0/classifier/0.png) |![](/results/hdim256/images/backprop/PCA/epoch99/0/classifier/0.png) |
+|  256  |  TSNE  | ![](/results/hdim256/images/backprop/TSNE/epoch0/0/classifier/0.png) | ![](/results/hdim256/images/backprop/TSNE/epoch60/0/classifier/0.png) |![](/results/hdim256/images/backprop/TSNE/epoch99/0/classifier/0.png) |
+|  512  |  PCA   | ![](/results/hdim512/images/backprop/PCA/epoch0/0/classifier/0.png) | ![](/results/hdim512/images/backprop/PCA/epoch60/0/classifier/0.png) |![](/results/hdim512/images/backprop/PCA/epoch99/0/classifier/0.png) |
+|  512  |  TSNE  | ![](/results/hdim512/images/backprop/TSNE/epoch0/0/classifier/0.png) | ![](/results/hdim512/images/backprop/TSNE/epoch60/0/classifier/0.png) |![](/results/hdim512/images/backprop/TSNE/epoch99/0/classifier/0.png) |
+| 1000  |  PCA   | ![](/results/hdim1000/images/backprop/PCA/epoch0/0/classifier/0.png) | ![](/results/hdim1000/images/backprop/PCA/epoch60/0/classifier/0.png) |![](/results/hdim1000/images/backprop/PCA/epoch99/0/classifier/0.png) |
+| 1000  |  TSNE  | ![](/results/hdim1000/images/backprop/TSNE/epoch0/0/classifier/0.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch60/0/classifier/0.png) |![](/results/hdim1000/images/backprop/TSNE/epoch99/0/classifier/0.png) |
+
+
+#### layer 1
+| hdim  | PCA or TSNE | epoch0 | epoch60 | epoch99 |
+|:-----:|:-----------:|:------:|:-------:|:-------:|
+|  256  |  PCA   | ![](/results/hdim256/images/backprop/PCA/epoch0/0/classifier/1.png) | ![](/results/hdim256/images/backprop/PCA/epoch60/0/classifier/1.png) |![](/results/hdim256/images/backprop/PCA/epoch99/0/classifier/1.png) |
+|  256  |  TSNE  | ![](/results/hdim256/images/backprop/TSNE/epoch0/0/classifier/1.png) | ![](/results/hdim256/images/backprop/TSNE/epoch60/0/classifier/1.png) |![](/results/hdim256/images/backprop/TSNE/epoch99/0/classifier/1.png) |
+|  512  |  PCA   | ![](/results/hdim512/images/backprop/PCA/epoch0/0/classifier/1.png) | ![](/results/hdim512/images/backprop/PCA/epoch60/0/classifier/1.png) |![](/results/hdim512/images/backprop/PCA/epoch99/0/classifier/1.png) |
+|  512  |  TSNE  | ![](/results/hdim512/images/backprop/TSNE/epoch0/0/classifier/1.png) | ![](/results/hdim512/images/backprop/TSNE/epoch60/0/classifier/1.png) |![](/results/hdim512/images/backprop/TSNE/epoch99/0/classifier/1.png) |
+| 1000  |  PCA   | ![](/results/hdim1000/images/backprop/PCA/epoch0/0/classifier/1.png) | ![](/results/hdim1000/images/backprop/PCA/epoch60/0/classifier/1.png) |![](/results/hdim1000/images/backprop/PCA/epoch99/0/classifier/1.png) |
+| 1000  |  TSNE  | ![](/results/hdim1000/images/backprop/TSNE/epoch0/0/classifier/1.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch60/0/classifier/1.png) |![](/results/hdim1000/images/backprop/TSNE/epoch99/0/classifier/1.png) |
+
+
+#### layer 2
+| hdim  | PCA or TSNE | epoch0 | epoch60 | epoch99 |
+|:-----:|:-----------:|:------:|:-------:|:-------:|
+|  256  |  PCA   | ![](/results/hdim256/images/backprop/PCA/epoch0/0/classifier/2.png) | ![](/results/hdim256/images/backprop/PCA/epoch60/0/classifier/2.png) |![](/results/hdim256/images/backprop/PCA/epoch99/0/classifier/2.png) |
+|  256  |  TSNE  | ![](/results/hdim256/images/backprop/TSNE/epoch0/0/classifier/2.png) | ![](/results/hdim256/images/backprop/TSNE/epoch60/0/classifier/2.png) |![](/results/hdim256/images/backprop/TSNE/epoch99/0/classifier/2.png) |
+|  512  |  PCA   | ![](/results/hdim512/images/backprop/PCA/epoch0/0/classifier/2.png) | ![](/results/hdim512/images/backprop/PCA/epoch60/0/classifier/2.png) |![](/results/hdim512/images/backprop/PCA/epoch99/0/classifier/2.png) |
+|  512  |  TSNE  | ![](/results/hdim512/images/backprop/TSNE/epoch0/0/classifier/2.png) | ![](/results/hdim512/images/backprop/TSNE/epoch60/0/classifier/2.png) |![](/results/hdim512/images/backprop/TSNE/epoch99/0/classifier/2.png) |
+| 1000  |  PCA   | ![](/results/hdim1000/images/backprop/PCA/epoch0/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/PCA/epoch60/0/classifier/2.png) |![](/results/hdim1000/images/backprop/PCA/epoch99/0/classifier/2.png) |
+| 1000  |  TSNE  | ![](/results/hdim1000/images/backprop/TSNE/epoch0/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch60/0/classifier/2.png) |![](/results/hdim1000/images/backprop/TSNE/epoch99/0/classifier/2.png) |
+
+
+
 
