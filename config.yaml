@@ -1,7 +1,7 @@
 seed: 42
 device: "cuda"  # cpu or cuda
-backprop: True
-run_name: "backprop tsne hdim 1000"
+backprop: False
+run_name: "FF TSNE hdim 1000"
 
 input:
   path: datasets

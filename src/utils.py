@@ -187,7 +187,7 @@ def plot(data, labels, batchsize, layer, batch, epoch, norm, classifier, oldData
     #data = data.detach().numpy()
 
     #either backprop or FF
-    runType = 'backprop'
+    runType = 'FF'
 
     #either TSNE or PCA
     method = 'TSNE'
