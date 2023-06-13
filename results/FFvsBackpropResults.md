@@ -74,3 +74,25 @@ Here the layer has been left untouched before plotting using TSNE.
 |  2    | backprop | ![](/results/hdim1000/images/backprop/TSNE/epoch0/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch60/0/classifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch99/0/classifier/2.png) |
 |  2    | FF | ![](/results/hdim1000/images/FF/TSNE/epoch0/0/classifier/2.png) | ![](/results/hdim1000/images/FF/TSNE/epoch60/0/classifier/2.png) | ![](/results/hdim1000/images/FF/TSNE/epoch99/0/classifier/2.png) |
 
+
+## <center>**Classifier with TSNE**</center>
+
+### **Hidden layer dimension 256**
+|FF or backprop | epoch0 | epoch60 | epoch99 |
+|:--------------:|:------:|:-------:|:-------:|
+|backprop | ![](/results/hdim256/images/backprop/TSNE/epoch0/0/actualClassifier/2.png) | ![](/results/hdim256/images/backprop/TSNE/epoch60/0/actualClassifier/2.png) | ![](/results/hdim256/images/backprop/TSNE/epoch99/0/actualClassifier/2.png) |
+|FF | ![](/results/hdim256/images/FF/TSNE/epoch0/0/actualClassifier/2.png) | ![](/results/hdim256/images/FF/TSNE/epoch60/0/actualClassifier/2.png) | ![](/results/hdim256/images/FF/TSNE/epoch99/0/actualClassifier/2.png) |
+
+
+### **Hidden layer dimension 512**
+|FF or backprop | epoch0 | epoch60 | epoch99 |
+|:--------------:|:------:|:-------:|:-------:|
+|backprop | ![](/results/hdim512/images/backprop/TSNE/epoch0/0/actualClassifier/2.png) | ![](/results/hdim512/images/backprop/TSNE/epoch60/0/actualClassifier/2.png) | ![](/results/hdim512/images/backprop/TSNE/epoch99/0/actualClassifier/2.png) |
+|FF | ![](/results/hdim512/images/FF/TSNE/epoch0/0/actualClassifier/2.png) | ![](/results/hdim512/images/FF/TSNE/epoch60/0/actualClassifier/2.png) | ![](/results/hdim512/images/FF/TSNE/epoch99/0/actualClassifier/2.png) |
+
+
+### **Hidden layer dimension 1000**
+|FF or backprop | epoch0 | epoch60 | epoch99 |
+|:--------------:|:------:|:-------:|:-------:|
+|backprop | ![](/results/hdim1000/images/backprop/TSNE/epoch0/0/actualClassifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch60/0/actualClassifier/2.png) | ![](/results/hdim1000/images/backprop/TSNE/epoch99/0/actualClassifier/2.png) |
+|FF | ![](/results/hdim1000/images/FF/TSNE/epoch0/0/actualClassifier/2.png) | ![](/results/hdim1000/images/FF/TSNE/epoch60/0/actualClassifier/2.png) | ![](/results/hdim1000/images/FF/TSNE/epoch99/0/actualClassifier/2.png) |
